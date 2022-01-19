@@ -1,0 +1,9 @@
+version: '3' #required line, version of docker compose
+services:
+  redis-server:  #we want to create a set of containers, this one is called redis-server and is using image redis
+    image: 'redis'
+  node-app:
+    restart: on-failure
+    build: .  #look in the current directory for a Docker file and use that to build this image for container 'node-app'
+    ports:
+      - "4001:8081"  #- is an arrray in docker compose, we're connecting 4001 on our local machine to 8081 inside container
